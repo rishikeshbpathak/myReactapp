@@ -1,0 +1,52 @@
+/* Sidebar.css */
+.sidebar {
+    width: 112.5px;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 33px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .sidebar__logo
+  {
+    position: absolute;
+    top:32px;
+    margin-left: -16px;
+  }
+  .sidebar__logo img {
+    width: 51px;
+  }
+  
+  .sidebar__menu {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .sidebar__icon {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+  
+  .sidebar__menuItem span {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .sidebar_menu_title{
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 60px;
+      padding: 10px 0;
+    }
+   
+    .sidebar__icon {
+      margin-right: 0;
+    }
+  }
