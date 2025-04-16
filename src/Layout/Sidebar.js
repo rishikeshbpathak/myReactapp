@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaHome,
   FaSearch,
@@ -8,87 +8,60 @@ import {
   FaVideo,
   FaPlay,
   FaList,
+  FaBars,
+  FaTimes
 } from "react-icons/fa";
-import "./Sidebar.css"; // Import the CSS file for styling
+import "./Sidebar.css";
 
 export default function Sidebar() {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsMobileOpen(!isMobileOpen);
+  };
+
   return (
-    <div className="sidebar bg-dark">
-      {/* Logo Section */}
-      <div className="sidebar__logo">
-        <img
-          src="https://img.hotstar.com/image/upload/v1737554969/web-assets/prod/images/rebrand/logo.png"
-          alt="JioHostar Logo"
-        />
-      </div>
-      <div className="sidebar__menu">
-        <ul className="list-none space-y-4">
-          <li>
-            <a href="/home" aria-label="Home">
-              <span className="sidebar__icon">
-                <FaHome />
-              </span>
-              <span className="sidebar_menu_title"> Home </span>
-            </a>
-          </li>
-          <li>
-            <a href="/search" aria-label="Search">
-              <span className="sidebar__icon">
-                <FaSearch />
-              </span>
-              <span className="sidebar_menu_title"> Search </span>
-            </a>
-          </li>
-          <li>
-            <a href="/tv" aria-label="TV">
-              <span className="sidebar__icon">
-                <FaTv />
-              </span>
-              <span className="sidebar_menu_title"> TV </span>
-            </a>
-          </li>
-          <li>
-            <a href="/movies" aria-label="Movies">
-              <span className="sidebar__icon">
-                <FaFilm />
-              </span>
-              <span className="sidebar_menu_title"> Movies </span>
-            </a>
-          </li>
-          <li>
-            <a href="/sports" aria-label="Sports">
-              <span className="sidebar__icon">
-                <FaPlay />
-              </span>
-              <span className="sidebar_menu_title"> Sports </span>
-            </a>
-          </li>
-          <li>
-            <a href="/live" aria-label="Live">
-              <span className="sidebar__icon">
-                <FaVideo />
-              </span>
-              <span className="sidebar_menu_title"> Live </span>
-            </a>
-          </li>
-          <li>
-            <a href="/categories" aria-label="Categories">
-              <span className="sidebar__icon">
-                <FaList />
-              </span>
-              <span className="sidebar_menu_title"> Categories </span>
-            </a>
-          </li>
-          <li>
-            <a href="/profile" aria-label="Profile">
-              <span className="sidebar__icon">
-                <FaUser />
-              </span>
-              <span className="sidebar_menu_title"> Profile </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <>
+      {/* Mobile Toggle Button - Only visible on mobile */}
+      <button 
+        className="sidebar__mobile-toggle"
+        onClick={toggleSidebar}
+        aria-label="Toggle menu"
+      >
+        {isMobileOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      <nav className={`sidebar ${isMobileOpen ? "sidebar--open" : ""}`}>
+        {/* Logo Section with adjusted positioning */}
+        <div className="sidebar__logo">
+          <img
+            src="https://img.hotstar.com/image/upload/v1737554969/web-assets/prod/images/rebrand/logo.png"
+            alt="Hotstar Logo"
+          />
+        </div>
+        
+        <div className="sidebar__menu">
+          <ul>
+            {[
+              { icon: <FaHome />, title: "Home", path: "/" },
+              { icon: <FaSearch />, title: "Search", path: "/search" },
+              { icon: <FaTv />, title: "TV", path: "/tv" },
+              { icon: <FaFilm />, title: "Movies", path: "/movies" },
+              { icon: <FaPlay />, title: "Sports", path: "/sports" },
+              { icon: <FaVideo />, title: "Live", path: "/live" },
+              { icon: <FaList />, title: "Categories", path: "/categories" },
+              { icon: <FaUser />, title: "Profile", path: "/profile" },
+            ].map((item, index) => (
+              <li key={index} className="sidebar__menu_list">
+                <a href={item.path} aria-label={item.title}>
+                  <span className="sidebar__icon">{item.icon}</span>
+                  <span className="sidebar_menu_title">{item.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 }

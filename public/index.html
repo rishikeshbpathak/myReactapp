@@ -9,6 +9,7 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
  
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -46,7 +47,7 @@
     background-color: #0f1014 !important;
   }
   .body_container{
-    width: 93%;
+    width: 95%;
     margin-left: auto;
   }
   .title_1{
@@ -63,4 +64,11 @@
     font-weight: 600;
     color: #fff9 !important;
   }
+  a:hover .hidden.card_hover {
+  display: block;
+  opacity: 1;
+  /* animation: fadeIn 0.2s ease-in-out; */
+  transition: opacity 8s ease-in-out;
+}
+  
   </style>
