@@ -85,7 +85,8 @@
   display: none;
   position: fixed;
   top: 4px;
-  left: 7px;
+  /* left: 7px; */
+  right: 7px;
   background: none;
   border: none;
   color: white;
@@ -101,6 +102,10 @@
     padding: 10px 0;
     transform: translateX(-100%);
   }
+  .body_container{
+    width: 95%;
+    margin: 0 auto;
+  }
   
   .sidebar.sidebar--open {
     transform: translateX(0);
@@ -113,7 +118,8 @@
   
   .sidebar__logo {
     top: 20px;
-    left: calc(50% + 20px); /* Adjust logo position to account for toggle button */
+    /* left: calc(50% + 20px); Adjust logo position to account for toggle button */
+    left: calc(50% + 0px); /* Adjust logo position to account for toggle button */
   }
   
   .sidebar__logo img {

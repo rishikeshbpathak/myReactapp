@@ -37,7 +37,7 @@ export default function Latest_Releases({ showData }) {
           {showData !== 0 && (
             <a
               href="/Latest-Releases"
-              className="flex items-center text-white hover:text-blue-400 transition-colors">
+              className="flex items-center text-white view-all-btn ">
               View All <FaArrowRight className="ml-1" />
             </a>
           )}
@@ -46,17 +46,17 @@ export default function Latest_Releases({ showData }) {
 
       <div className="box-card mt-4">
         {error && <p className="text-red-500">{error}</p>}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2">
           {displayedMovies.length > 0 ? (
             displayedMovies.map((movie) => (
               <div
                 key={movie.id}
-                className="group relative rounded-lg overflow-hidden transition-transform hover:scale-105 hover:z-10">
+                className="group relative p-1 rounded-[10px] overflow-hidden transition-transform hover:scale-105 hover:z-10 border-1 border-gray-400">
                 <a href={`/watch/${movie.id}`} className="block">
                   <img
                     src={movie.poster}
                     alt={movie.title}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-65 rounded-lg object-file"
                     onError={(e) => {
                       e.target.src =
                         "https://via.placeholder.com/300x450?text=No+Poster";

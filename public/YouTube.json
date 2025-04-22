@@ -349,6 +349,48 @@
         "rating": "8.1",
         "language": "Hindi",
         "short-description": "A satirical take on religion and blind faith."
+      },
+      {
+        "id": 28,
+        "title": "Khiladi-786",
+        "poster": "https://upload.wikimedia.org/wikipedia/en/1/13/Khiladi_786_poster.jpg",
+        "video": "https://www.youtube.com/embed/EBFuMYwZeJ0",
+        "plot": "Khiladi 786 is an action-comedy film starring Akshay Kumar and Asin. It was received with mixed reviews but had a strong box office opening.",
+        "runtime": "2h 33m",
+        "year": 2012,
+        "author": "Ashish R Mohan",
+        "rating": "4.3",
+        "language": "Hindi",
+        "short-description": "KHILADI 786 [FULL HD] | Hindi Full Movie | Akshay Kumar, Asin, & Mithun Chakraborty."
       }
+      ,{
+        "id": 29,
+        "title": "Chennai Express",
+        "poster": "https://livingwithlili.weebly.com/uploads/1/0/9/7/109778451/731013462.jpg",
+        "video": "https://www.youtube.com/embed/ISzJdZnGjXQ",
+        "plot": "A man's journey to immerse his late grandfather's ashes turns into a wild adventure when he meets a South Indian girl with a dangerous family.",
+        "runtime": "2h 21m",
+        "year": 2013,
+        "author": "Rohit Shetty",
+        "rating": "6.0",
+        "language": "Hindi",
+        "short-description": "Action-packed romantic comedy starring Shah Rukh Khan and Deepika Padukone."
+      },
+      {
+        "id": 30,
+        "title": "Bajrangi Bhaijaan",
+        "poster": "https://m.media-amazon.com/images/M/MV5BYzVjMjZiNGUtZjZiNy00Yzg4LWEzYzYtMmI1NDg5NWNiNjUwXkEyXkFqcGc@._V1_.jpg",
+        "video": "https://www.youtube.com/embed/4nwAra0mz_Q",
+        "plot": "An Indian man with a magnanimous heart takes a mute six-year-old Pakistani girl separated from her parents back to her homeland to reunite her with her family.",
+        "runtime": "2h 39m",
+        "year": 2015,
+        "author": "Kabir Khan",
+        "rating": "8.0",
+        "language": "Hindi",
+        "short-description": "Salman Khan shines in this emotional journey of love, humanity, and cross-border compassion."
+      }
+      
+      
+      
     
   ]

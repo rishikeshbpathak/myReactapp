@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaPlay, FaPlus, FaArrowRight } from "react-icons/fa";
 
 export default function Action_Extravaganza({ showData }) {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        // const response = await fetch("https://www.freetestapi.com/api/v1/movies");
         const response = await fetch("/YouTube.json", {
           headers: {
             "Content-Type": "application/json",
@@ -19,89 +20,53 @@ export default function Action_Extravaganza({ showData }) {
         setMovies(data);
       } catch (error) {
         console.error("Error fetching movies:", error);
+        setError("Failed to load movies.");
       } 
     };
+
     fetchMovies();
   }, []);
 
+  const displayedMovies = showData === 0 ?  movies.slice(8, 19) : movies.slice(8, 16);
+
   return (
-    <section className="p-4 mt-5">
+    <section className="p-2 mt-0">
       <div className="lg:mx-auto">
-        <div className="flex pb-3 items-center justify-between px-4 sm:px-6 lg:px-0">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-0">
           <h2 className="text-2xl font-bold text-white">Action Extravaganza</h2>
           {showData !== 0 && (
             <a
               href="/Action-Extravaganza"
-              className="flex items-center text-white hover:text-blue-400 transition-colors">
+              className="flex items-center text-white view-all-btn">
               View All <FaArrowRight className="ml-1" />
             </a>
           )}
         </div>
       </div>
-      <div className="box-card">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 xl:grid-cols-8 gap-1">
-          {movies.length > 0 ? (
-            (showData === 0 ? movies.slice(8, 19) : movies.slice(8, 16)).map(
-              (movie, index) => (
-                <a
-                  href={`watch/${movie.id}`}
-                  key={movie.id}
-                  className="rounded-lg border p-0">
+
+      <div className="box-card mt-4">
+        {error && <p className="text-red-500">{error}</p>}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2">
+          {displayedMovies.length > 0 ? (
+            displayedMovies.map((movie) => (
+              <div
+                key={movie.id}
+                className="group relative p-1 rounded-[10px] overflow-hidden transition-transform hover:scale-105 hover:z-10 border-1 border-gray-400">
+                <a href={`/watch/${movie.id}`} className="block">
                   <img
                     src={movie.poster}
                     alt={movie.title}
-                    className="w-full h-auto rounded-sm object-cover"
+                    className="w-full h-65 rounded-lg object-file"
+                    onError={(e) => {
+                      e.target.src =
+                        "https://via.placeholder.com/300x450?text=No+Poster";
+                    }}
                   />
-                  {/* <div  className="hidden card_hover absolute top-100"> */}
-                  <div
-                    className={`hidden ${
-                      showData === 0 ? "" : "card_hover"
-                    } absolute top-210`}
-                    style={
-                      index === movies.slice(0, 7).length - 1
-                        ? { right: "-65px" }
-                        : {}
-                    }>
-                    <div class="position-absolute w-100">
-                      <div class="px-0 py-1">
-                        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg max-w-xs">
-                          <img
-                            src={movie.poster}
-                            alt={movie.title}
-                            class="w-full h-70 rounded-lg"
-                          />
-                          <div class="p-4">
-                            <h1 class="text-white text-2xl font-bold mb-2">
-                              {movie.title}
-                            </h1>
-                            <div class="flex items-center mb-4">
-                              <a
-                                href={`watch/${movie.id}`}
-                                class="bg-white text-black font-semibold py-2 px-4 rounded flex items-center mr-2">
-                                <i class="fas fa-play mr-2"></i> Watch Now
-                              </a>
-                              <button class="bg-gray-700 text-white font-semibold py-2 px-4 rounded">
-                                <i class="fas fa-plus"></i>
-                              </button>
-                            </div>
-                            <p class="text-gray-400 text-sm mb-2">
-                              {movie.year} | {movie.country} | {movie.runtime} |{" "}
-                              {movie.language}
-                            </p>
-                            <p class="text-gray-400 text-sm">
-                              {/* show only 10 word */}
-                              {movie.plot.split(" ").slice(0, 10).join(" ")}...
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </a>
-              )
-            )
+              </div>
+            ))
           ) : (
-            <p>Loading movies...</p>
+            <p className="text-white">No movies available.</p>
           )}
         </div>
       </div>
